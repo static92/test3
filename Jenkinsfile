@@ -39,7 +39,7 @@ pipeline {
     stage('Build image') {
       steps{
         container('docker') {
-          sh 'docker build -t static92/lol:latest .'
+          sh 'docker build -t static92/lol:kekus .'
         }
       }
     }
@@ -51,7 +51,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("latest")
+            dockerImage.push("kekus")
           }
         }
       }
