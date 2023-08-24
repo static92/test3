@@ -39,7 +39,7 @@ pipeline {
     stage('Build image') {
       steps{
         container('docker') {
-          dockerImage = docker.build dockerimagename
+          sh 'docker build -t static92/lol:latest .'
         }
       }
     }
