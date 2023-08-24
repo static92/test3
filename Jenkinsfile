@@ -45,15 +45,10 @@ pipeline {
     }
 
     stage('Pushing Image') {
-      environment {
-               registryCredential = 'dockerhub-credentials'
-           }
       steps{
-        script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("kekus")
+        container('docker') {
+          sh 'docker push static92/lol:kekus' 
           }
-        }
       }
     }
 
