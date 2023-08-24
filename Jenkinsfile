@@ -57,13 +57,13 @@ pipeline {
           }
       }
     }
-
-    stage('Apply Kubernetes files') {
+  }
+node {
+  stage('Apply Kubernetes files') {
     withKubeConfig([credentialsId: 'root', serverUrl: 'https://kubernetes.default']) {
       sh 'kubectl apply -f deployment.yaml'
     }
   }
-
-  }
+}
 
 }
