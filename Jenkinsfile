@@ -4,7 +4,6 @@ pipeline {
     dockerimagename = "static92/lol"
     dockerImage = ""
   }
-
   agent {
     kubernetes {
       yaml '''
@@ -25,6 +24,7 @@ pipeline {
               path: /var/run/docker.sock    
         '''
     }
+  }
   stages {
 
     stage('Checkout Source') {
@@ -61,6 +61,5 @@ pipeline {
         }
       }
     }
-  }
   }
 }
