@@ -38,7 +38,7 @@ pipeline {
 
     stage('Deploying React.js container to Kubernetes') {
       steps {
-        withKubeConfig([credentialsId: 'kube', serverUrl: 'https://192.168.0.116']) {
+        withKubeConfig([credentialsId: 'kube', serverUrl: 'https://192.168.0.116:6443']) {
           sh 'kubectl apply -f deployment.yaml'
           sh 'kubectl apply -f service.yaml'
         }
