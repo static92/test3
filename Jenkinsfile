@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "static92/lol"
+    dockerimagename = "static92/lol:puk"
     dockerImage = ""
   }
 
@@ -30,16 +30,17 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("latest")
+            dockerImage.push("puk")
           }
         }
       }
     }
 
-    stage('Deploying App to Kubernetes') {
+    stage('Deploying React.js container to Kubernetes') {
       steps {
-        script {
-          kubernetesDeploy(configs: "deployment.yaml", "service.yaml")
+        withKubeConfig([credentialsId: 'kube', serverUrl: 'https://192.168.0.116:6443']) {
+          sh 'kubectl apply -f deployment.yaml'
+          sh 'kubectl apply -f service.yaml'
         }
       }
     }
