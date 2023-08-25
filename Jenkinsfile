@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "static92/lol:puk"
+    dockerimagename = "static92/lol:latest"
     dockerImage = ""
   }
 
@@ -30,7 +30,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("puk")
+            dockerImage.push("latest")
           }
         }
       }
