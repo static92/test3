@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: static92/lol:latest
+        image: static92/lol:puk
         ports:
         - containerPort: 3000
