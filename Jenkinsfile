@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "static92/lol"
+    dockerimagename = "static92/lol:puk"
     dockerImage = ""
   }
 
